@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets - Neural Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+    <h1 class="site-title">Neural Lab</h1>
+    <nav class="nav-menu">
+        <a href="index.html">Accueil</a>
+        <a href="tickets.html">Tickets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main style="padding: 20px;">
+    <h2>Ouvrir un ticket</h2>
+    <form class="ticket-form">
+        <label>Pseudo :</label>
+        <input type="text" placeholder="Votre pseudo" required>
+        
+        <label>Email :</label>
+        <input type="email" placeholder="Votre email" required>
+        
+        <label>Catégorie :</label>
+        <select required>
+            <option value="">Sélectionner...</option>
+            <option>Support Technique</option>
+            <option>Signalement</option>
+            <option>Autre</option>
+        </select>
+        
+        <label>Description :</label>
+        <textarea placeholder="Expliquez votre demande..." required></textarea>
+        
+        <button type="submit">Envoyer</button>
+    </form>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 Neural Lab</p>
+</footer>
+</body>
+</html>
