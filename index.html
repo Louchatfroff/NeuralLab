@@ -19,7 +19,7 @@
             --bg-primary: #000000;
             --text-primary: #ffffff;
             --text-secondary: #808080;
-            --accent-color: #6366f1;
+            --accent-indigo: #6366f1;
             --border-color: #1a1a1a;
         }
 
@@ -93,6 +93,24 @@
             cursor: none;
         }
 
+        .site-name {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--accent-indigo);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--accent-indigo), 0 0 20px var(--accent-indigo), 0 0 30px var(--accent-indigo);
+            animation: glowPulse 2s infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px var(--accent-indigo), 0 0 20px var(--accent-indigo), 0 0 30px var(--accent-indigo);
+            }
+            50% {
+                text-shadow: 0 0 15px var(--accent-indigo), 0 0 30px var(--accent-indigo), 0 0 45px var(--accent-indigo);
+            }
+        }
+
         .coming-soon-text {
             font-size: 20px;
             letter-spacing: 4px;
@@ -119,6 +137,10 @@
 
         /* Responsive */
         @media (max-width: 600px) {
+            .site-name {
+                font-size: 12px;
+            }
+
             .coming-soon-text {
                 font-size: 16px;
                 letter-spacing: 3px;
@@ -133,7 +155,8 @@
 <body>
     <!-- Coming Soon Screen -->
     <div class="coming-soon" id="comingSoon">
-        <div class="coming-soon-text">NEURAL_LAB</div>
+        <div class="site-name">NEURAL_LAB</div>
+        <div class="coming-soon-text">COMING SOON</div>
         <div class="click-text">CLICK TO VISIT</div>
     </div>
 
