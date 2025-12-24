@@ -17,10 +17,9 @@
 
         :root {
             --bg-primary: #000000;
-            --bg-secondary: #0a0a0a;
             --text-primary: #ffffff;
             --text-secondary: #808080;
-            --accent-red: #ff0000;
+            --accent-color: #6366f1;
             --border-color: #1a1a1a;
         }
 
@@ -95,21 +94,10 @@
         }
 
         .coming-soon-text {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: comingSoonPulse 2s infinite;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-
-        .site-name {
-            font-size: 14px;
+            font-size: 20px;
             letter-spacing: 4px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            animation: loadingPulse 1.5s infinite;
+            margin-bottom: 40px;
         }
 
         .click-text {
@@ -117,18 +105,11 @@
             letter-spacing: 3px;
             color: var(--text-secondary);
             animation: clickBlink 2s infinite;
-            text-transform: uppercase;
         }
 
-        @keyframes comingSoonPulse {
-            0%, 100% {
-                opacity: 0.6;
-                text-shadow: 0 0 0 transparent;
-            }
-            50% {
-                opacity: 1;
-                text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-            }
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         @keyframes clickBlink {
@@ -136,82 +117,15 @@
             50% { opacity: 1; }
         }
 
-        /* Glitch effect on hover */
-        .coming-soon:hover .coming-soon-text {
-            animation: glitchText 0.3s infinite;
-        }
-
-        @keyframes glitchText {
-            0% {
-                transform: translate(0);
-                text-shadow: -2px 0 var(--accent-red), 2px 0 cyan;
-            }
-            20% {
-                transform: translate(-2px, 2px);
-                text-shadow: 2px 0 var(--accent-red), -2px 0 cyan;
-            }
-            40% {
-                transform: translate(-2px, -2px);
-                text-shadow: 2px 0 cyan, -2px 0 var(--accent-red);
-            }
-            60% {
-                transform: translate(2px, 2px);
-                text-shadow: -2px 0 cyan, 2px 0 var(--accent-red);
-            }
-            80% {
-                transform: translate(2px, -2px);
-                text-shadow: 2px 0 var(--accent-red), -2px 0 cyan;
-            }
-            100% {
-                transform: translate(0);
-                text-shadow: -2px 0 var(--accent-red), 2px 0 cyan;
-            }
-        }
-
-        /* Scanline effect */
-        .coming-soon::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                transparent 50%,
-                rgba(0, 0, 0, 0.1) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        /* Red accent line */
-        .accent-line {
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-            margin-bottom: 40px;
-            animation: scanline 3s infinite;
-        }
-
-        @keyframes scanline {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
         /* Responsive */
         @media (max-width: 600px) {
             .coming-soon-text {
-                font-size: 24px;
-                letter-spacing: 6px;
+                font-size: 16px;
+                letter-spacing: 3px;
             }
 
             .click-text {
                 font-size: 10px;
-            }
-
-            .site-name {
-                font-size: 12px;
             }
         }
     </style>
@@ -219,9 +133,7 @@
 <body>
     <!-- Coming Soon Screen -->
     <div class="coming-soon" id="comingSoon">
-        <div class="site-name">NEURAL_LAB</div>
-        <div class="accent-line"></div>
-        <div class="coming-soon-text">COMING SOON</div>
+        <div class="coming-soon-text">NEURAL_LAB</div>
         <div class="click-text">CLICK TO VISIT</div>
     </div>
 
@@ -242,28 +154,11 @@
             cursorDot.style.top = e.clientY - 2 + 'px';
         });
 
-        // Hover effect on coming soon
+        // Click to redirect
         const comingSoon = document.getElementById('comingSoon');
 
-        comingSoon.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(1.5)';
-            cursor.style.borderColor = '#ff0000';
-        });
-
-        comingSoon.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.borderColor = '#ffffff';
-        });
-
-        // Click to redirect
         comingSoon.addEventListener('click', () => {
-            // Visual feedback
-            comingSoon.style.background = '#0a0a0a';
-
-            // Redirect after short delay
-            setTimeout(() => {
-                window.location.href = 'https://louchat.vercel.app/NeuralLab';
-            }, 200);
+            window.location.href = 'https://louchat.vercel.app/NeuralLab';
         });
     </script>
 </body>
