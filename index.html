@@ -1,59 +1,270 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Lab</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header class="header">
-      <h1 class="site-title">NeuralLab</h1>
-      <nav class="nav-menu">
-        <a href="game1.html">SCP:SL</a>
-        <a href="game2.html">SL:Classics</a>
-        <a href="game3.html">Minecraft</a>
-        <a href="tickets.html">Tickets</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+    <title>Neural Lab - Coming Soon</title>
+    <meta name="description" content="Neural Lab - Coming Soon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <section class="banner-container">
-      <div class="banner banner1">
-        <div class="overlay">
-          <h2>Neural Lab</h2>
-          <p>IP : play.neurallab.fr</p>
-          <p>Un serveur SCP:SL tout ce qu'il y a de plus simple.</p>
-        </div>
-      </div>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #808080;
+            --accent-red: #ff0000;
+            --border-color: #1a1a1a;
+        }
 
-      <div class="banner banner2">
-        <div class="overlay">
-          <h2>Neural Anarchie</h2>
-          <p>IP : play.NeuralAnarchie.fr</p>
-          <p>Un serveur SCP:SL ou il n'y a qu'une seule règle, la loi du plus fort.</p>
-        </div>
-      </div>
+        body {
+            font-family: 'JetBrains Mono', 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-      <div class="banner banner3">
-        <div class="overlay">
-          <h2>Neural Lab : Classics</h2>
-          <p>IP : play.NeuralClassics.fr</p>
-          <p>SCP:SL plus ancien, toujours sur la mise à jour Scopophobia, niveau relevé garanti.</p>
-        </div>
-      </div>
+        /* Custom Cursor */
+        body * {
+            cursor: none;
+        }
 
-      <div class="banner banner4">
-        <div class="overlay">
-          <h2>NeuralCraft</h2>
-          <p>IP : play.neuralcraft.fr</p>
-          <p>Notre serveur Minecraft Lifesteal avec économie et système Elo compétitif.</p>
-        </div>
-      </div>
-    </section>
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
 
-    <footer class="footer">
-      <p>© 2025 Neural Lab</p>
-    </footer>
-  </body>
+        #cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+        }
+
+        /* Dot pattern background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Coming Soon Screen */
+        .coming-soon {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            cursor: none;
+        }
+
+        .coming-soon-text {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: comingSoonPulse 2s infinite;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .site-name {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .click-text {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            animation: clickBlink 2s infinite;
+            text-transform: uppercase;
+        }
+
+        @keyframes comingSoonPulse {
+            0%, 100% {
+                opacity: 0.6;
+                text-shadow: 0 0 0 transparent;
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            }
+        }
+
+        @keyframes clickBlink {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Glitch effect on hover */
+        .coming-soon:hover .coming-soon-text {
+            animation: glitchText 0.3s infinite;
+        }
+
+        @keyframes glitchText {
+            0% {
+                transform: translate(0);
+                text-shadow: -2px 0 var(--accent-red), 2px 0 cyan;
+            }
+            20% {
+                transform: translate(-2px, 2px);
+                text-shadow: 2px 0 var(--accent-red), -2px 0 cyan;
+            }
+            40% {
+                transform: translate(-2px, -2px);
+                text-shadow: 2px 0 cyan, -2px 0 var(--accent-red);
+            }
+            60% {
+                transform: translate(2px, 2px);
+                text-shadow: -2px 0 cyan, 2px 0 var(--accent-red);
+            }
+            80% {
+                transform: translate(2px, -2px);
+                text-shadow: 2px 0 var(--accent-red), -2px 0 cyan;
+            }
+            100% {
+                transform: translate(0);
+                text-shadow: -2px 0 var(--accent-red), 2px 0 cyan;
+            }
+        }
+
+        /* Scanline effect */
+        .coming-soon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                transparent 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* Red accent line */
+        .accent-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+            margin-bottom: 40px;
+            animation: scanline 3s infinite;
+        }
+
+        @keyframes scanline {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .coming-soon-text {
+                font-size: 24px;
+                letter-spacing: 6px;
+            }
+
+            .click-text {
+                font-size: 10px;
+            }
+
+            .site-name {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Coming Soon Screen -->
+    <div class="coming-soon" id="comingSoon">
+        <div class="site-name">NEURAL_LAB</div>
+        <div class="accent-line"></div>
+        <div class="coming-soon-text">COMING SOON</div>
+        <div class="click-text">CLICK TO VISIT</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+
+            cursorDot.style.left = e.clientX - 2 + 'px';
+            cursorDot.style.top = e.clientY - 2 + 'px';
+        });
+
+        // Hover effect on coming soon
+        const comingSoon = document.getElementById('comingSoon');
+
+        comingSoon.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(1.5)';
+            cursor.style.borderColor = '#ff0000';
+        });
+
+        comingSoon.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.borderColor = '#ffffff';
+        });
+
+        // Click to redirect
+        comingSoon.addEventListener('click', () => {
+            // Visual feedback
+            comingSoon.style.background = '#0a0a0a';
+
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = 'https://louchat.vercel.app/NeuralLab';
+            }, 200);
+        });
+    </script>
+</body>
 </html>
